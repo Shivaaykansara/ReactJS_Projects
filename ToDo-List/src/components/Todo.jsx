@@ -12,9 +12,10 @@ export const Todo = () => {
  
   const [task, setTask] = useState(()=>getLocalStorage());
   const [inputValue,setInputValue] = useState([]);
+  const [editValue, setEditValue] = useState('');
+  const [editFlag,setEditFlag] = useState(false);
 
-  const handleSubmitForm = (inputValue) => {
-    const { id, content, checked } = inputValue;
+  const handleSubmitForm = ({id,content,checked,edit}) => {
     if (!content) return;
     const ifTodoContentMatched = task.find(
       (curTask) => curTask.content === content
@@ -26,6 +27,11 @@ export const Todo = () => {
   };
 
   setLocalStorage(task)
+
+  const handleEditTodo = (value)=>{
+    setEditValue(value)
+    setEditFlag(true);
+  }
 
   const handleDeleteTask = (value) => {
     const updatedTask = task.filter((curTask) => curTask.content !== value);
@@ -54,7 +60,7 @@ export const Todo = () => {
         <h1>Todo List</h1>
         <TodoDate />
       </header>
-      <TodoForm onAddTodo={handleSubmitForm} />
+      <TodoForm onAddTodo={handleSubmitForm} editFlag={editFlag} editValue={editValue} />
       <section className="myUnOrdList">
         <ul>
           {task.map((curElem) => {
@@ -65,6 +71,7 @@ export const Todo = () => {
                 checked = {curElem.checked}
                 onHandleDeleteTodo={handleDeleteTask}
                 onHandleCheckedTodo={handleCheckedTodo}
+                onHandleEditTodo={handleEditTodo}
               />
             );
           })}

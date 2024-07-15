@@ -127,16 +127,16 @@
     /*word-wrap: break-word;
       */ /*flex-wrap: wrap;
       */
-    font-size: 20px;
+    font-size: 30px;
     color: #1c2833;
     border-radius: 30px;
     transition: background-color 200ms ease-in-out;
     background-color: #f2f3f4;
-    min-width: 35rem;
-    max-width: 40rem;
+    min-width: 30rem;
+    max-width: 35rem;
     padding: 1rem 2rem;
     display: grid;
-    grid-template-columns: 1fr 0.3fr 0.3fr;
+    grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
     justify-content: start;
     gap: .5rem;
     /*align-items: center;
@@ -150,7 +150,8 @@
   }
   
   .check-btn,
-  .delete-btn {
+  .delete-btn,
+  .edit-btn {
     font-size: 3rem;
     cursor: pointer;
     width: 3rem;
@@ -159,17 +160,20 @@
     margin: 0 5px;
     background-color: #fff;
     color: rgb(0, 0, 0);
+    color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   
   .check-btn {
-    color: #fff;
     background-color: #2ecc71;
   }
   
   .delete-btn {
-    color: #fff;
     background-color: #e74c3c;
+  }
+
+  .edit-btn{
+    background-color: lightskyblue;
   }
   
   .checkList {
