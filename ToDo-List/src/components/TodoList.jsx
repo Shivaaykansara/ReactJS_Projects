@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-import { MdCheck, MdDeleteForever,MdModeEdit  } from "react-icons/md";
+import { MdCheck, MdDeleteForever  } from "react-icons/md";
 
-export const TodoList = ({data,checked,onHandleEditTodo,onHandleCheckedTodo,onHandleDeleteTodo}) => {
+export const TodoList = ({data,checked,onHandleCheckedTodo,onHandleDeleteTodo}) => {
  
   return (
     <li className="todo-item">
@@ -12,9 +12,6 @@ export const TodoList = ({data,checked,onHandleEditTodo,onHandleCheckedTodo,onHa
       </button>
       <button className="delete-btn" onClick={() => onHandleDeleteTodo(data)}>
         <MdDeleteForever />
-      </button>
-      <button className="edit-btn" onClick={() => onHandleEditTodo(data)}>
-        <MdModeEdit />
       </button>
     </li>
   );

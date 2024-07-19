@@ -7,31 +7,21 @@ import { TodoDate } from "./TodoDate";
 import { TodoList } from "./TodoList";
 import { getLocalStorage, setLocalStorage } from "./TodoLocalStorage";
 
-
 export const Todo = () => {
- 
-  const [task, setTask] = useState(()=>getLocalStorage());
-  const [inputValue,setInputValue] = useState([]);
-  const [editValue, setEditValue] = useState('');
-  const [editFlag,setEditFlag] = useState(false);
+  const [task, setTask] = useState(() => getLocalStorage());
+  const [inputValue, setInputValue] = useState([]);
 
-  const handleSubmitForm = ({id,content,checked,edit}) => {
+  const handleSubmitForm = ({ id, content, checked}) => {
     if (!content) return;
     const ifTodoContentMatched = task.find(
       (curTask) => curTask.content === content
     );
     if (ifTodoContentMatched) return;
-    setTask((prevTask) => [...prevTask, { id, content, checked }]);
-    setInputValue("")
-    
+    setTask((prevTask) => [...prevTask, { id, content, checked}]);
+    setInputValue("");
   };
 
-  setLocalStorage(task)
-
-  const handleEditTodo = (value)=>{
-    setEditValue(value)
-    setEditFlag(true);
-  }
+  setLocalStorage(task);
 
   const handleDeleteTask = (value) => {
     const updatedTask = task.filter((curTask) => curTask.content !== value);
@@ -42,17 +32,16 @@ export const Todo = () => {
     setTask([]);
   };
 
-  const handleCheckedTodo = (content) =>{
-    const updatedTask = task.map((curTask)=>{
-        if (curTask.content === content){
-            return{...curTask, checked: !curTask.checked}
-        }
-        else{
-            return curTask;
-        }
-    })
-    setTask(updatedTask)
-  }
+  const handleCheckedTodo = (content) => {
+    const updatedTask = task.map((curTask) => {
+      if (curTask.content === content) {
+        return { ...curTask, checked: !curTask.checked };
+      } else {
+        return curTask;
+      }
+    });
+    setTask(updatedTask);
+  };
 
   return (
     <section className="todo-container">
@@ -60,7 +49,7 @@ export const Todo = () => {
         <h1>Todo List</h1>
         <TodoDate />
       </header>
-      <TodoForm onAddTodo={handleSubmitForm} editFlag={editFlag} editValue={editValue} />
+      <TodoForm onAddTodo={handleSubmitForm} />
       <section className="myUnOrdList">
         <ul>
           {task.map((curElem) => {
@@ -68,10 +57,9 @@ export const Todo = () => {
               <TodoList
                 key={curElem.id}
                 data={curElem.content}
-                checked = {curElem.checked}
+                checked={curElem.checked}
                 onHandleDeleteTodo={handleDeleteTask}
                 onHandleCheckedTodo={handleCheckedTodo}
-                onHandleEditTodo={handleEditTodo}
               />
             );
           })}

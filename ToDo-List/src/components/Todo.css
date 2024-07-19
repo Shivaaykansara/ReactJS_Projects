@@ -136,7 +136,7 @@
     max-width: 35rem;
     padding: 1rem 2rem;
     display: grid;
-    grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
+    grid-template-columns: 1fr 0.3fr 0.3fr;
     justify-content: start;
     gap: .5rem;
     /*align-items: center;
@@ -150,8 +150,7 @@
   }
   
   .check-btn,
-  .delete-btn,
-  .edit-btn {
+  .delete-btn {
     font-size: 3rem;
     cursor: pointer;
     width: 3rem;
@@ -172,10 +171,6 @@
     background-color: #e74c3c;
   }
 
-  .edit-btn{
-    background-color: lightskyblue;
-  }
-  
   .checkList {
     text-decoration: line-through;
   }
@@ -198,3 +193,4 @@
   .clear-btn:hover {
     background-color: #8d1407;
   }
+

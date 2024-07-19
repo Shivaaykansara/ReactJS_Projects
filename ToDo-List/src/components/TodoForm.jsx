@@ -2,23 +2,21 @@
 import { useState } from "react";
 
 
-export const TodoForm = ({onAddTodo,editValue,editFlag})=>{
+export const TodoForm = ({onAddTodo})=>{
     const [inputValue,setInputValue] = useState({});
-    // const [editableValue,setEditableValue] = useState(editValue);
     const handleInputValue = (value) =>{
-        setInputValue({id:value, content:value, checked:false, edit:editFlag});
+        setInputValue({id:value, content:value, checked:false});
     }
-    
     const handleSubmitForm = (e)=>{
         e.preventDefault()
-        onAddTodo(inputValue,editFlag)
+        onAddTodo(inputValue);
         setInputValue({id:"", content:"", checked:false});
     }
     return (
         <section className="form">
             <form onSubmit={handleSubmitForm}>
                 <div>
-                    <input type="text" className="todo-input text-black" autoComplete="off" defaultValue={editFlag?editValue:""}  onChange={(event)=>handleInputValue(event.target.value)}/>
+                    <input type="text"  className="placeholder-black todo-input text-black" autoComplete="off" value={inputValue.content}  onChange={(event)=>handleInputValue(event.target.value)}/>
                 </div>
                 <div>
                     <button type="submit" className="todo-btn" >
